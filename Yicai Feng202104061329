@@ -1,0 +1,14 @@
+def LGLR（x1,y1,x2）:
+n＝len(x1)
+z＝0
+for i in range(n):
+xi,yi＝x[i],y[i]
+p＝1
+for j in range(n)：
+if i＝＝j：
+xj＝x[j]
+p*＝(x2-xj)/(xi-xj)
+z＋＝yi*p
+return z
+y2=LGLR（x1,y1,x2）
+print("拉格朗日插值多项式结果为:"y2)

@@ -1,0 +1,51 @@
+def LGLR（x1,y1,x2）：
+n＝len(x1)
+z＝0
+for i in range(n):
+xi,yi＝x[i],y[i]
+p＝1
+for j in range(n)：
+if i＝＝j：
+xj＝x[j]
+p*＝(x2-xj)/(xi-xj)
+z＋＝yi*p
+return z
+y2=LGLR（x1,y1,x2）
+print("拉格朗日插值多项式结果为:"y2)
+
+ 
+#include <stdio.h>
+#define MAXN 1010
+double x[MAXN], y[MAXN];
+double Lagrange(int n, double *x, double *y, double xp)  
+{
+    double sum = 0, mul = 1;
+
+    for (int i = 1; i <= n; ++i) 
+    {
+        mul = y[i];
+        for (int j = 1; j <= n; ++j) 
+        {
+            if (i == j) continue;
+            mul *= (xp - x[j]) / (x[i] - x[j]);
+        }
+        sum += mul;
+    }
+    return sum;
+}
+int main()
+{
+    int n;
+    printf("数据点的个数n：\n");
+    scanf("%d", &n);
+
+    printf("x和y：\n");
+    for (int i = 1; i <= n; i++)
+        scanf("%lf%lf", &x[i], &y[i]);
+    double result;
+    printf("待求点的值：\n");
+    scanf("%lf", &result);
+    double res = Lagrange(n, x, y, result);
+    printf("在x=%g处的函数值为%f\n", result, res);
+    return 0;
+}
